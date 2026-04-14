@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+
+<div class="p-6"> 
+  <div class="max-w-4xl">
+    
+    <div class="max-w-xl mb-10">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-white ">Llista de favorits</h2>
+        <p class="text-sm text-gray-600">Selecciona un usuari per veure la seva llista</p>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label class="text-xs font-bold uppercase text-white">Usuari</label>
+        <select 
+          (change)="onUserChange($event)"
+          class="w-full border border-gray-300 rounded py-2 px-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-gray-400"
+        >
+          <option value="" selected disabled>Seleccioni un usuari</option>
+          <option *ngFor="let usuario of usuarios" [value]="usuario._id" class="text-black">
+            {{ usuario.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div *ngIf="llistaActual" class="mt-8 border-t pt-4">
+        <h3 class="font-bold text-black">Llista de {{ usuarioSeleccionat?.nombre }}</h3>
+        </div>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-bold text-white mb-4">Totes les Universitats</h3>
+      
+      <div class="overflow-x-auto border border-gray-300 rounded">
+        <table class="w-full border-collapse text-left text-sm text-black">
+          <thead class="bg-gray-100 border-b border-gray-300">
+            <tr>
+              <th class="p-3 font-bold">Nom de la Universitat</th>
+              <th class="p-3 font-bold w-24 text-center">Afegir</th>
+              <th class="p-3 font-bold w-24 text-center">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let uni of universidades" class="border-b border-gray-200">
+              <td class="p-3 text-white">{{ uni.nombre }}</td>
+              <td class="p-3 text-center text-white">
+                <button 
+                  (click)="addFavorit(uni)" 
+                  class="px-3 py-1 bg-black text-white text-xs rounded hover:bg-gray-800"
+                >
+                  Afegir
+                </button>
+              </td>
+              <td class="p-3 text-center">
+                <button 
+                  (click)="eliminarFavorit(uni)" 
+                  class="px-3 py-1 border border-black text-white text-xs rounded hover:bg-blue-800"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            
+            <tr *ngIf="!universidades || universidades.length === 0">
+              <td colspan="3" class="p-6 text-center text-gray-500 italic">
+                No hi ha universitats carregades.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

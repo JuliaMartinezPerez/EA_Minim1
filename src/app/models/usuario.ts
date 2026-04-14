@@ -1,4 +1,5 @@
 import { Universidad } from "./universidad";
+import { Llista } from "./llista";
 
 export interface Usuario {
     _id: string;
@@ -8,4 +9,5 @@ export interface Usuario {
     rol: 'admin' | 'user';
     universidad?: Universidad;
     activo: boolean;
+    llista?: Llista;
 }

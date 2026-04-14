@@ -6,6 +6,7 @@ import { UserCreate } from './components/user-create/user-create';
 import { UniversityDashboard } from './components/university-dashboard/university-dashboard';
 import { UniversityCreate } from './components/university-create/university-create';
 import { UniversityDetail } from './components/university-detail/university-detail';
+import { LlistaFavorits } from './components/llista-favorits/llista-favorits';
 
 export const routes: Routes = [
   { path: 'login', component: Login },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'universidades', component: UniversityDashboard },
   { path: 'universidades/crear', component: UniversityCreate },
   { path: 'universidad/:id', component: UniversityDetail },
+  { path: 'favorits', component: LlistaFavorits },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' }
 ];
